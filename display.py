@@ -16,6 +16,9 @@ def show_image(img):
     oled.image(img)
     oled.show()
     
+def deinit():
+    global oled
+    oled.poweroff()
 
 if __name__ == '__main__':
     init()

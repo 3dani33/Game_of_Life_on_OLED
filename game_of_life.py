@@ -8,6 +8,7 @@ class GameOfLife:
     width: int
     height: int
     grid: np.array
+    generation: int
     neighbour_idx = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
     
     def __init__(self, width: int, height: int, random=False):
@@ -18,6 +19,7 @@ class GameOfLife:
             self.grid = np.random.rand(width, height) > 0.7
         else:
             self.grid = np.array([[False] * height] * width)  # generate empty grid
+        self.generation = 0
     
     @classmethod
     def fromArray(cls, grid):
@@ -54,7 +56,8 @@ class GameOfLife:
                     self.grid[x, y] = neighbours == 2 or neighbours == 3
                 else:
                     # a dead cell with exactly three neighbours becomes a live cell
-                    self.grid[x, y] = neighbours == 3 
+                    self.grid[x, y] = neighbours == 3
+        self.generation += 1
         return self.grid
 
     def __str__(self):
