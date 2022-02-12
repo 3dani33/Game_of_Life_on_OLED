@@ -16,7 +16,7 @@ class GameOfLife:
         self.width = width
         self.heigth = height
         if random:
-            self.grid = np.random.rand(width, height) > 0.7
+            self.grid = np.random.rand(width, height) > 0.9
         else:
             self.grid = np.array([[False] * height] * width)  # generate empty grid
         self.generation = 0
