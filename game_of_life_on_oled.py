@@ -1,6 +1,7 @@
 """Conway's Game of Life on a OLED display."""
 from PIL import Image
 import numpy as np
+import time
 
 import display
 from game_of_life import GameOfLife
@@ -20,6 +21,7 @@ if __name__ == '__main__':
             im = Image.fromarray(np.rot90(gol.grid))
             display.show_image(im)
             gol.next()
+            time.sleep(0.05)
     except KeyboardInterrupt:
-        print('Exiting.')
+        print('\nExiting.')
         display.deinit()
